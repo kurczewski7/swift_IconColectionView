@@ -11,6 +11,7 @@ struct Icon {
     var name: String
     var price: Double = 0.0
     var isFeatured: Bool = false
+    var description: String = "Halloween icon designed by Tania Raskolova"
     
     init(name: String, price:Double, isFeatured:Bool)
     {

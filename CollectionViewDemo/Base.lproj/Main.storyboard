@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,6 +52,7 @@
                                 <connections>
                                     <outlet property="iconImageView" destination="VGi-8O-jzL" id="h6s-Z7-2oQ"/>
                                     <outlet property="iconPrinceLabel" destination="q5V-uu-u8h" id="s1S-ex-6je"/>
+                                    <segue destination="qEN-9z-4Ud" kind="presentation" identifier="showIconDetail" id="a5a-DG-fvo"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -63,7 +65,81 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0c-zd-cLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692" y="183.05847076461771"/>
+            <point key="canvasLocation" x="543" y="183"/>
+        </scene>
+        <!--Icon Detail View Controller-->
+        <scene sceneID="Gch-P6-FrC">
+            <objects>
+                <viewController id="qEN-9z-4Ud" customClass="IconDetailViewController" customModule="CollectionViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RDm-3Y-0hf"/>
+                        <viewControllerLayoutGuide type="bottom" id="G18-PV-8LG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4It-ck-V0O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-Va-yt3">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="YFd-UM-fwm"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0C5-aN-v7r">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZA-Vu-arb">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyZ-Nv-hTd">
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZe-gL-NgD">
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13s-sl-kuQ">
+                                <frame key="frameInset" minX="22" minY="9" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Beck"/>
+                                <connections>
+                                    <segue destination="2I5-yh-W1e" kind="unwind" unwindAction="unwindToHomeWithSegue:" id="AEK-L5-XWu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ErB-eD-8yA">
+                                <color key="backgroundColor" red="1" green="0.80873946929999996" blue="0.48386762100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="BUY"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OeP-Va-yt3" firstAttribute="leading" secondItem="4It-ck-V0O" secondAttribute="leading" id="0G2-Z9-tBM"/>
+                            <constraint firstItem="G18-PV-8LG" firstAttribute="top" secondItem="ErB-eD-8yA" secondAttribute="bottom" id="177-F1-4D1"/>
+                            <constraint firstItem="ErB-eD-8yA" firstAttribute="centerX" secondItem="4It-ck-V0O" secondAttribute="centerX" id="54J-KI-19m"/>
+                            <constraint firstItem="0C5-aN-v7r" firstAttribute="centerX" secondItem="4It-ck-V0O" secondAttribute="centerX" id="6vl-ES-uTX"/>
+                            <constraint firstItem="OeP-Va-yt3" firstAttribute="top" secondItem="4It-ck-V0O" secondAttribute="top" id="IXn-gP-exg"/>
+                            <constraint firstItem="OeP-Va-yt3" firstAttribute="leading" secondItem="ErB-eD-8yA" secondAttribute="leading" id="fcD-8p-Doc"/>
+                            <constraint firstItem="0C5-aN-v7r" firstAttribute="top" secondItem="OeP-Va-yt3" secondAttribute="bottom" constant="15" id="nK0-hZ-0ne"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OeP-Va-yt3" secondAttribute="trailing" constant="-11" id="tFw-ud-0ym"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="MyZ-Nv-hTd" id="AAf-oF-yUA"/>
+                        <outlet property="iconImageView" destination="OeP-Va-yt3" id="yHh-dX-83X"/>
+                        <outlet property="nameLabel" destination="5ZA-Vu-arb" id="zUK-Od-Zqh"/>
+                        <outlet property="priceLabel" destination="gZe-gL-NgD" id="i6B-Pe-sLg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O3I-na-Aau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2I5-yh-W1e" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1317" y="190"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rbO-rV-hPZ">

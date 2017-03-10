@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4F039B1E730840003093A1 /* IconDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F039A1E730840003093A1 /* IconDetailViewController.swift */; };
 		2C5DF6351E6F479800FC6C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DF6341E6F479800FC6C1B /* AppDelegate.swift */; };
 		2C5DF63A1E6F479800FC6C1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DF6381E6F479800FC6C1B /* Main.storyboard */; };
 		2C5DF63C1E6F479800FC6C1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DF63B1E6F479800FC6C1B /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C4F039A1E730840003093A1 /* IconDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconDetailViewController.swift; path = ../IconDetailViewController.swift; sourceTree = "<group>"; };
 		2C5DF6311E6F479800FC6C1B /* CollectionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5DF6341E6F479800FC6C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C5DF6391E6F479800FC6C1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				2C7AF58E1E7180E200CA5012 /* IconCollectionViewController.swift */,
 				2C7AF58C1E717FEE00CA5012 /* IconCollectionViewCell.swift */,
+				2C4F039A1E730840003093A1 /* IconDetailViewController.swift */,
 				2C5DF6341E6F479800FC6C1B /* AppDelegate.swift */,
 			);
 			name = Controlers;
@@ -296,6 +299,7 @@
 				2C5DF6351E6F479800FC6C1B /* AppDelegate.swift in Sources */,
 				2C7AF58F1E7180E200CA5012 /* IconCollectionViewController.swift in Sources */,
 				2CDEF4E01E71B8570099157C /* Icon.swift in Sources */,
+				2C4F039B1E730840003093A1 /* IconDetailViewController.swift in Sources */,
 				2C7AF58D1E717FEE00CA5012 /* IconCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

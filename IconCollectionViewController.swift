@@ -95,6 +95,24 @@ class IconCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    @IBAction func unwindToHome(segue: UIStoryboardSegue){
+    
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="showIconDetail")
+        {
+            // daje tablice indexPath do kolejnych sekcji
+            if let indexPaths = collectionView?.indexPathsForSelectedItems {
+                let destinationController = segue.destination as! IconDetailViewController
+                // podstawia wszystkie dane za jednym razem
+                destinationController.icon=iconSet[indexPaths[0].row]
+                collectionView?.deselectItem(at: indexPaths[0], animated: false)
+            
+            }
+        }
+
+    }
 
     // MARK: UICollectionViewDelegate
 
