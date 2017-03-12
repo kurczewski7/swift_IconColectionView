@@ -163,6 +163,12 @@ class IconCollectionViewController: UICollectionViewController {
         }
 
     }
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier=="showIconDetail"{
+            if shareEnabled { return false }
+        }
+        return true
+    }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // sprawdza czy tryb udostepniania jest włączony, w przeciwnym wypadku opuszcza metodę
         guard shareEnabled else {
