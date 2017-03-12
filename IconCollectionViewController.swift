@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Social
 
 private let reuseIdentifier = "Cell"
 
 class IconCollectionViewController: UICollectionViewController {
     
+    private var shareEnabled = false
+    private var selectedIcons: [Icon] = []
+    
+    @IBOutlet var shareButton: UIBarButtonItem!
     private var iconSet: [Icon] =
         [Icon(name:	"candle",           price:	3.99,   isFeatured:	false),
          Icon(name:	"cat",              price:	2.99,	isFeatured:	true ),
@@ -34,6 +39,48 @@ class IconCollectionViewController: UICollectionViewController {
          Icon(name:	"ic_smoking_pipe",	price:	6.99,	isFeatured:	false),
          Icon(name:	"ic_vespa",         price:	9.99,	isFeatured:	false)]
 
+    @IBAction func shareButtonTapped(_ sender: AnyObject) {
+        if shareEnabled {
+        // wysłanie postu do FB
+            if selectedIcons.count > 0 {
+                if (SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter))
+                {
+                    let twittComposer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                    twittComposer?.setInitialText("Love these icons! I bay thtem")
+                    for icon in selectedIcons {
+                        twittComposer?.add(UIImage(named: icon.name))
+                        
+                    }
+                    present(twittComposer!, animated: true, completion: nil)
+                }
+            }
+        // odznacz wszystkie
+        if let indexPaths=collectionView?.indexPathsForSelectedItems {
+            for indexPath in indexPaths {
+                collectionView?.deselectItem(at: indexPath, animated: false)
+            }
+        }
+        // usuwa wszystkie zaznaczone elementy
+        selectedIcons.removeAll(keepingCapacity: true)
+        
+        // zmienie tryb Share na No
+        shareEnabled=false
+        collectionView?.allowsMultipleSelection=false
+        shareButton.title="Share"
+        shareButton.style=UIBarButtonItemStyle.plain
+    }
+    else
+    {
+        shareEnabled=true
+        collectionView?.allowsMultipleSelection=true
+        shareButton.title="Done"
+        shareButton.style=UIBarButtonItemStyle.done
+    }
+        //--------------  todoo
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,7 +116,7 @@ class IconCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
@@ -90,12 +137,15 @@ class IconCollectionViewController: UICollectionViewController {
         //cell.selectedBackgroundView?.backgroundColor=UIColor.red
         cell.backgroundView=(icon.isFeatured) ? UIImageView(image: UIImage(named: "feature-bg")) : nil
         
+        cell.selectedBackgroundView=UIImageView(image: UIImage(named: "selected-bg"))
+        
+        
         cell.iconImageView.image=UIImage(named: icon.name)
         cell.iconPrinceLabel.text="$\(icon.price)"
     
         return cell
     }
-    @IBAction func unwindToHome(segue: UIStoryboardSegue){
+    func unwindToHome(segue: UIStoryboardSegue){
     
     }
     
@@ -113,7 +163,30 @@ class IconCollectionViewController: UICollectionViewController {
         }
 
     }
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // sprawdza czy tryb udostepniania jest włączony, w przeciwnym wypadku opuszcza metodę
+        guard shareEnabled else {
+            return
+        }
+        // określa listę wybranych używanych przezindexPath
+        let selectedIcon = iconSet[indexPath.row]
+        
+        // dodaje wybrany element do tablicy
+        selectedIcons.append(selectedIcon)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        // sprawdza czy tryb udostepniania jest włączony, w przeciwnym wypadku opuszcza metodę
+        guard shareEnabled else {
+            return
+        }
+        let deSelectedIcon = iconSet[indexPath.row]
+        // w closure porównujemy nazwę odznaczonej ikony i wyszukujemy jej indeks
+        if let index = selectedIcons.index(where: { $0.name==deSelectedIcon.name     })
+        {
+            selectedIcons.remove(at: index)
+        }
+    }
     // MARK: UICollectionViewDelegate
 
     /*

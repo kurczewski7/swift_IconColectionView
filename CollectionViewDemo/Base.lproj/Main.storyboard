@@ -61,7 +61,16 @@
                             <outlet property="delegate" destination="xo1-0x-kCm" id="0L5-QX-Tf0"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Icon Store" id="nrP-EZ-dpn"/>
+                    <navigationItem key="navigationItem" title="Icon Store" id="nrP-EZ-dpn">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="Bll-z3-y5H">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="xo1-0x-kCm" id="OBw-FB-Zwp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="shareButton" destination="Bll-z3-y5H" id="1Oi-9z-9G0"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0c-zd-cLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,7 +101,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyZ-Nv-hTd">
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

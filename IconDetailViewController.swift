@@ -22,7 +22,7 @@ class IconDetailViewController: UIViewController {
 
     @IBOutlet var nameLabel: UILabel! {
         didSet {
-            nameLabel.text=icon?.name
+            nameLabel.text=(icon?.name)!+String(" icon")!
         }
     }
 
